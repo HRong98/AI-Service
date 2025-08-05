@@ -5,6 +5,7 @@ from langchain_community.document_loaders import TextLoader
 import os
 from dotenv import load_dotenv
 load_dotenv()
+
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 # pip install faiss-cpu or faiss-gpu
 # 현재 파이썬 스크립트 실행 위치 반환
@@ -13,8 +14,9 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 restaurant_faiss = os.path.join(current_dir, "restaurant-faiss")
 
 # TextLoader 클래스를 사용하여 "restaurant.txt"라는 파일에서 텍스트를 로드합니다.
-# 윈도우 사용자는 경로 문제시 "loader = TextLoader(f'{current_dir}\\restaurant.txt', encoding='utf-8')" 이 문구로 사용하시면 됩니다.
-loader = TextLoader(f'{current_dir}/restaurants.txt')
+# 윈도우 사용자는 경로 문제시
+# "loader = TextLoader(f'{current_dir}\\restaurant.txt', encoding='utf-8')" 이 문구로 사용하시면 됩니다.
+loader = TextLoader(f'{current_dir}/restaurants.txt', encoding='utf-8')
 
 # 파일의 내용을 document 객체로 로드합니다.
 documents = loader.load()
